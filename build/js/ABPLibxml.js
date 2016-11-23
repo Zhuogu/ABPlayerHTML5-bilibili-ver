@@ -26,7 +26,7 @@ function CommentLoader(url, xcm, callback) {
                 cm.load(BilibiliParser(f));
                 callback();
             } else {
-                var standarizedXML = xmlhttp.responseXML == null ? (new window.DOMParser()).parseFromString(xmlhttp.responseText, "text/xml") : xmlhttp.responseXML;
+                var standarizedXML = xmlhttp.responseXML == null ? (new window.DOMParser()).parseFromString(xmlhttp.responseText.replace(/[^\x09\x0A\x0D\x20-\uD7FF\uE000-\uFFFD\u10000-\u10FFFF]/g,""), "text/xml") : xmlhttp.responseXML;
                 cm.load(BilibiliParser(standarizedXML));
                 //console.log(standarizedXML);
                 callback();
